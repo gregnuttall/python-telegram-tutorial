@@ -3,12 +3,12 @@ import requests
 import time
 import urllib
 
-import config
+# import config
 from dbhelper import DBHelper
 
 db = DBHelper()
 
-TOKEN = config.token
+TOKEN = "1790370142:AAFVvKwxaKehDfNEsuoDPzMQaTnfem9YGLQ"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 
@@ -41,7 +41,10 @@ def get_last_update_id(updates):
 
 def handle_updates(updates):
     for update in updates["result"]:
-        text = update["message"]["text"]
+        try:
+            text = update["message"]["text"]
+        except:
+            continue
         chat = update["message"]["chat"]["id"]
         items = db.get_items(chat)
         if text == "/done":

@@ -3,10 +3,10 @@ import requests
 import time
 import urllib
 
-import config
+# import config
 
 
-TOKEN = config.token
+TOKEN = "1790370142:AAFVvKwxaKehDfNEsuoDPzMQaTnfem9YGLQ"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 
@@ -41,7 +41,7 @@ def echo_all(updates):
     for update in updates["result"]:
         text = update["message"]["text"]
         chat = update["message"]["chat"]["id"]
-        send_message(text, chat)
+        send_message("Hello " + text, chat)
 
 
 def get_last_chat_id_and_text(updates):
